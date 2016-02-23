@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.sourceit.task2.R;
+import com.sourceit.task2.ui.BankClasses.Bank;
+import com.sourceit.task2.ui.BankClasses.SystemBank;
 import com.sourceit.task2.utils.L;
 
 import java.util.ArrayList;
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private final int CRITICAL = 3;
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
-    private System root;
+    private SystemBank root;
 
     private Bank rate;
     private Bank temp;
@@ -35,9 +37,9 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        Retrofit.getBanks(new Callback<System>() {
+        Retrofit.getBanks(new Callback<SystemBank>() {
             @Override
-            public void success(System system, Response response) {
+            public void success(SystemBank system, Response response) {
                 root = system;
                 setAdapter();
             }
